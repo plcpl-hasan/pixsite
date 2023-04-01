@@ -9,10 +9,12 @@ import { setUser } from './Utils/ReduxToolkit/AuthSlice/AuthSlice';
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(setUser(user.email))
+
       }
     }, [])
   })

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { SigninUser } from '../../Utils/ReduxToolkit/AuthSlice/AuthSlice';
@@ -10,7 +10,7 @@ const Login = () => {
     const navigate = useNavigate();
     const from = location.state?.from.pathname || '/'
 
-    const { errorMessage, isError } = useSelector(state => state.auth)
+    const { errorMessage, isError, isLoading, email } = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const onSubmit = (data) => {
         // console.log(data)
@@ -20,6 +20,13 @@ const Login = () => {
             )
         reset()
     }
+    useEffect(() => {
+        if (!isLoading && email) {
+            navigate(from, { replace: true })
+        }
+    }, [email, isLoading])
+
+
     return (
         <div className='h-[500px] flex flex-col justify-center items-center'>
             <h2 className='text-4xl'>Login</h2>
