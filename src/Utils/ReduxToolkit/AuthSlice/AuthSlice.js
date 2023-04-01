@@ -30,11 +30,11 @@ const AuthSlice = createSlice({
     initialState,
     reducers: {
         toggleLoading: (state) => {
-            state.isLoading = false
+            state.isLoading = !state.isLoading
         },
         setUser: (state, action) => {
             state.email = action.payload
-            state.isLoading = true
+            state.isLoading = false
             state.isSuccess = false
         },
         logOut: (state) => {

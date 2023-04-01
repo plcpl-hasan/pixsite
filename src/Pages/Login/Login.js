@@ -1,22 +1,24 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { SigninUser } from '../../Utils/ReduxToolkit/AuthSlice/AuthSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Login = () => {
     const { register, handleSubmit, reset } = useForm();
-    const navigate = useNavigate()
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from.pathname || '/'
+
     const { errorMessage, isError } = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const onSubmit = (data) => {
         // console.log(data)
         dispatch(SigninUser({ email: data.email, password: data.password }))
             .then(
-                navigate('/gallery')
+                navigate(from, { replace: true })
             )
         reset()
-
     }
     return (
         <div className='h-[500px] flex flex-col justify-center items-center'>
