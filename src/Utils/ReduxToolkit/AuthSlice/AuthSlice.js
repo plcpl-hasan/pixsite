@@ -23,8 +23,6 @@ export const SigninUser = createAsyncThunk("auth/SigninUser", async ({ email, pa
 })
 
 
-
-
 const AuthSlice = createSlice({
     name: 'auth',
     initialState,
