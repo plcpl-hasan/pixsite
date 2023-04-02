@@ -4,7 +4,8 @@ import { Navigate, useLocation } from 'react-router-dom';
 
 const PrivateRoute = ({ children }) => {
     const location = useLocation();
-    const { email, isLoading } = useSelector(state => state.auth)
+    const { email, isLoading } = useSelector(state => state.auth);
+
     if (isLoading) {
         return <p className='text-center  text-4xl'> Loading... </p>
     }

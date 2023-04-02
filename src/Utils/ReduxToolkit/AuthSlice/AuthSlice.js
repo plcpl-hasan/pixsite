@@ -10,7 +10,7 @@ const initialState = {
     errorMessage: ""
 }
 
-export const CreateUser = createAsyncThunk("auth/CreateUser", async ({ email, password, name }) => {
+export const CreateUser = createAsyncThunk("auth/CreateUser", async ({ email, password }) => {
     const data = await createUserWithEmailAndPassword(auth, email, password)
     return data?.user.email
 })

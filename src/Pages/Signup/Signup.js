@@ -23,18 +23,21 @@ const Signup = () => {
             {isError ? <p className='text-red-500 my-2'>{errorMessage}</p> : ''}
             <div className='w-96'>
                 <form onSubmit={handleSubmit(onSubmit)}>
+
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
                         <input type="email"{...register("email")} placeholder="Your Email" className="input input-bordered w-full " />
                     </div>
+
                     <div className="form-control w-full my-2">
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
                         <input type="password"{...register("password")} placeholder="Your Password" className="input input-bordered w-full" />
                     </div>
+
                     <button type="submit" className='btn btn-accent w-full my-2' >Submit</button>
                 </form>
             </div>
